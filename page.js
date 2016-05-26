@@ -26,3 +26,27 @@ rectDemo.append("svg:rect")
   .attr("y", 300)
   .attr("height", 100)
   .attr("width", 100);
+  
+var foo = null;
+var foo2 = null;
+
+$(document).ready(function() {
+    foo = document.getElementById("testDiv");
+    foo.style.left = 0 + 'px';
+    foo2 = document.getElementById("testDiv2");
+    foo2.style.left = 0 + 'px';
+    foo2.style.top = foo.style.top + 400 + 'px';
+    doMoveHelper();
+});
+
+function doMoveHelper() {
+    foo.style.left = parseInt(foo.style.left) + 1 + 'px';
+    foo2.style.left = parseInt(foo2.style.left) + 1 + 'px';
+    if (parseInt(foo.style.left) < 200) {
+	setTimeout(doMoveHelper, 20);
+    } else {
+	clearTimeout(doMoveHelper);
+    }
+}
+
+
