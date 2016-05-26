@@ -1,3 +1,4 @@
+// todo encapsulate this, it doesn't need to be global
 var rectDemo = d3.select("#basicAnim")
   .append("svg:svg")
   .attr("width", 600)
@@ -49,4 +50,5 @@ function doMoveHelper() {
     }
 }
 
-
+// todo angular controller
+// seperate into as many files as possible for the future.
