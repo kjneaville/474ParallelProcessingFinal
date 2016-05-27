@@ -64,10 +64,10 @@ $(document).ready(function() {
     doUpHelper();
 
     foo = document.getElementById("testDiv");
-    foo.style.left = 0 + 'px';
+    foo.style.left = 700  + 'px';
     foo2 = document.getElementById("testDiv2");
-    foo2.style.left = 0 + 'px';
-    foo.style.top = 1200 + 'px';
+    foo2.style.left = 700 + 'px';
+    foo.style.top = 1300 + 'px';
     foo2.style.top = 1300 + 'px';
     doMoveHelper();
 });
@@ -75,7 +75,7 @@ $(document).ready(function() {
 function doMoveHelper() {
     foo.style.left = parseInt(foo.style.left) + 1 + 'px';
     foo2.style.left = parseInt(foo2.style.left) + 1 + 'px';
-    if (parseInt(foo.style.left) < 400) {
+    if (parseInt(foo.style.left) < 1100) {
   setTimeout(doMoveHelper, 20);
     } else {
   clearTimeout(doMoveHelper);
