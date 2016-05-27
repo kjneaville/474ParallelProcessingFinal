@@ -67,3 +67,12 @@ background-color:#4CAF50;
     border-radius: 25px;
     background: black;
 }
+#flowDiv, #flowDiv2, #flowDiv3, #barDiv, #barDiv2 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    background: black;
+}
