@@ -79,3 +79,8 @@ background-color:#4CAF50;
     border-radius: 25px;
     background: black;
 }
+
+/*todo this is a hack fix, make a real one once we know where elements will actually display.*/
+#race {
+    margin-top: 400px;
+}
