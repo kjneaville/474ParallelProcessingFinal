@@ -44,7 +44,7 @@ $(document).ready(function() {
         }
     ];
 
-    var margin = {top: 350, right: 0, bottom: 10, left: 0},
+    var margin = {top: 15, right: 0, bottom: 10, left: 0},
 // width = 1200 - margin.right - margin.left,
 // height = 900 - margin.top - margin.bottom;
         width = 400,
