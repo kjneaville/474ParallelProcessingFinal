@@ -79,3 +79,30 @@ background-color:#4CAF50;
     border-radius: 25px;
     background: black;
 }
+
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+}
+
+#example1 {
+    padding: 20px;
+	text-align: left;
+	margin-left: 50%;
+	margin-right: 10%;
+}
+
+#comparison {
+    padding: 20px;
+	text-align: left;
+	margin-left: 50%;
+	margin-right: 10%;
+}
+
