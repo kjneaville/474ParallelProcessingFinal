@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Introduction to Parallel Processing</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="page.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <head>
+    <title>Introduction to Parallel Processing</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="styles/page.css">
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="">Basics</a></li>
+      <li><a href="">Example</a></li>
+      <li><a href="">Locking</a></li>
+      <li><a href="">About</a></li>
+    </ul>
 
-</head>
-<body>
+    <h1><b>What is Parallel Processing?</b></h1>
+    <div id="basicAnim"></div>
+    <p id="intro">
+      Parallel processing (or parallel computing) is computation where many calculations are carried out simultaneously
+      instead of sequentially. There are physical constraints to how fast computers can process sequentially, which is
+      why it is important because parallel processing allows computers to run a program in a shorter amount of time.
+    </p>
 
-<ul>
-  <li><a href="">Basics</a></li>
-  <li><a href="">Example</a></li>
-  <li><a href="">Locking</a></li>
-  <li><a href="">About</a></li>
-</ul>
+    <div id="flowDiv"></div>
+    <div id="flowDiv2"></div>
+    <div id="flowDiv3"></div>
+    <div id="barDiv"></div>
+    <div id="barDiv2"></div>
+    <div id="testDiv"></div>
+    <div id="testDiv2"></div>
+  </body>
 
-<h1><b>What is Parallel Processing?</b></h1>
-<div id="basicAnim"></div>
-<p id="intro">Parallel processing (or parallel computing) is computation where many calculations are carried out simultaneously instead of sequentially. There are physical constraints to how fast computers can process sequentially, which is why it is important because parallel processing allows computers to run a program in a shorter amount of time.
-</p>
-<div id="flowDiv"></div>
-<div id="flowDiv2"></div>
-<div id="flowDiv3"></div>
-<div id="barDiv"></div>
-<div id="barDiv2"></div>
-<div id="testDiv"></div>
-<div id="testDiv2"></div>
-
-</body>
-
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script src="./js/page.js"></script>
-
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="./js/page.js"></script>
+  <script src="./js/dataRaces.js"></script>
 </html>
