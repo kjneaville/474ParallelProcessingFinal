@@ -65,7 +65,7 @@ $(document).ready(function() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    root = treeData[0];
+    var root = treeData[0];
 
     update(root);
 
