@@ -57,6 +57,7 @@ background-color:#4CAF50;
     border-radius: 25px;
     background: black;
     left: 700px;
+    visibility: hidden;
 }
 
 #testDiv2 {
@@ -69,6 +70,7 @@ background-color:#4CAF50;
     background: black;
     left: 700px;
     top: 400px;
+    visibility: hidden;
 }
 #flowDiv, #flowDiv2, #flowDiv3, #barDiv, #barDiv2 {
     position: absolute;
@@ -104,5 +106,13 @@ background-color:#4CAF50;
 	text-align: left;
 	margin-left: 50%;
 	margin-right: 10%;
+}
+
+#divide1 {
+    margin-top: 200px;
+}
+
+#parallel1 {
+    margin-top: -100px;
 }
 
