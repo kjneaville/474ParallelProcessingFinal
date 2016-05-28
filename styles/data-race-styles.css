@@ -1,0 +1,14 @@
+/*todo this is a hack fix, make a real one once we know where elements will actually display.*/
+#race {
+    margin-top: 400px;
+}
+
+#race-anim {
+    width: 60%;
+    margin: auto;
+}
+
+.instruction {
+    border: solid black 2px;
+    margin: 0;
+}
