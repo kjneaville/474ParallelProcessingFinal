@@ -117,6 +117,7 @@ $(document).ready(function() {
     }
 });
 
+// todo this needs to be encapsulated.
 //Make an SVG Container
  var svgContainer = d3.select("#timeLine").append("svg")
                                      .attr("width", 400)
