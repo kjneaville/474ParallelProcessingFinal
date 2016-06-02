@@ -43,8 +43,9 @@ var app = angular.module('app', [])
         ];
 
         // Desired section height
-        // todo decide how tall sections should be
+        // todo decide how tall sections should be and what header we want before charts start appearing
         $scope.sectionHeight = 400;
+        $scope.headerHeight = 0;
     })
 
     // Scroll directive
@@ -55,7 +56,7 @@ var app = angular.module('app', [])
             // Create a link function that allows dynamic element creation
             link:function(scope, elem) {
                 angular.element($window).bind("scroll", function() {
-                    scope.step = Math.ceil(this.pageYOffset / scope.sectionHeight);
+                    scope.step = Math.ceil((this.pageYOffset - scope.headerHeight) / scope.sectionHeight);
                     scope.$apply();
                 });
             }
@@ -85,7 +86,8 @@ var app = angular.module('app', [])
                             // this should never happen. Something went terribly wrong if this ran
                     }
                     
-                    // Get the current data
+                    // todo data needs to change, not filter on what is already there.
+                    // todo data will need to be an array indexed on step.
                     var data = scope.data.filter(scope.chartParams[scope.step].filter);
 
                     // Wrapper element to put your svg (chart) in
