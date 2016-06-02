@@ -24,10 +24,10 @@ var app = angular.module('app', [])
         // todo parameters for the chart directive. This will tell the directive which chart to display and what properties that chart will have //
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $scope.chartParams = [
-            {color:'red', fontSize:20, filter:function(d){return d}},
-            {color:'blue', fontSize:10, filter:function(d){return d.id>2}},
-            {color:'orange', fontSize:100, filter:function(d){return d.id<3}},
-            {color:'green', fontSize:30, filter:function(d){return d}}
+            {chart: 'example', color:'red', fontSize:20, filter:function(d){return d}},
+            {chart: 'example', color:'blue', fontSize:10, filter:function(d){return d.id>2}},
+            {chart: 'example', color:'orange', fontSize:100, filter:function(d){return d.id<3}},
+            {chart: 'example', color:'green', fontSize:30, filter:function(d){return d}}
         ];
 
         $scope.step = 0;
@@ -54,8 +54,8 @@ var app = angular.module('app', [])
             scope:false, // use global scope
             // Create a link function that allows dynamic element creation
             link:function(scope, elem) {
-                elem.bind("scroll", function() {
-                    scope.step = Math.ceil((this.scrollTop - 10)/ scope.sectionHeight);
+                angular.element($window).bind("scroll", function() {
+                    scope.step = Math.ceil(this.pageYOffset / scope.sectionHeight);
                     scope.$apply();
                 });
             }
@@ -72,21 +72,21 @@ var app = angular.module('app', [])
             link:function(scope,elem,attrs){
                 // Use the scope.$watch method to watch for changes to the step, then re-draw your chart
                 scope.$watch('step', function() {
+                    var chart = null;
 
                     // switch chart type depending on step, also apply any specific properties we need to
-                    switch(scope.settings[scope.step].chartParams) {
-                        case 'blah':
-                            var color = scope.settings[scope.step].color;
-                            var fontSize = scope.settings[scope.step].fontSize;
-                            var myChart = ParagraphChart().color(color).fontSize(fontSize);
+                    switch(scope.chartParams[scope.step].chart) {
+                        case 'example':
+                            var color = scope.chartParams[scope.step].color;
+                            var fontSize = scope.chartParams[scope.step].fontSize;
+                            chart = ParagraphChart().color(color).fontSize(fontSize);
                             break;
                         default:
                             // this should never happen. Something went terribly wrong if this ran
                     }
-
-
+                    
                     // Get the current data
-                    var data = scope.data.filter(scope.settings[scope.step].filter);
+                    var data = scope.data.filter(scope.chartParams[scope.step].filter);
 
                     // Wrapper element to put your svg (chart) in
                     wrapper = d3.select(elem[0])

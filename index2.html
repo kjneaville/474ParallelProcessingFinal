@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Parallel Processing</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+    <!--<link rel="stylesheet" type="text/css" href="styles/page.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="styles/data-race-styles.css">-->
+    <link rel="stylesheet" type="text/css" href="styles/scroller.css">
+
+  </head>
+  <body>
+    <div class="container" ng-app="app" id="app" ng-controller="Controller">
+      <section id="sandbox">
+        <!-- Scroller directive: set class 'scroller', and comput height -->
+        <scroll class="scroller">
+          <!-- Use ng-repeat to have a section of text for each element in your sectionText data
+              Calculate the height of the last element as the height of the scroller directive
+          -->
+          <div ng-repeat="section in sectionText" ng-style="$last == true && {'height':'calc(100vh - ' + sectionHeight + 'px)'} || {'height':sectionHeight + 'px'}">
+
+            <!-- Paragraph for each section of text, with class 'selected' if $index is current step -->
+            <p ng-class="{selected: $index == step}" ng-bind=section.text></p>
+
+          </div>
+          <charts class="chart"></charts>
+        </scroll>
+
+      </section>
+    </div>
+  </body>
+
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/ParagraphChart.js"></script>
+  <!--<script src="./js/page.js"></script>-->
+  <!--<script src="./js/dataRaces.js"></script>-->
+  <!--<script src="./js/divideAndConquer.js"></script>-->
+</html>
