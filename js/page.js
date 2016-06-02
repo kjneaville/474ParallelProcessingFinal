@@ -39,6 +39,7 @@ $(document).ready(function() {
     var flow3;
     var bar;
     var bar2;
+    var bar3;
 
     var foo = null;
     var foo2 = null;
@@ -48,18 +49,22 @@ $(document).ready(function() {
     flow3 = document.getElementById("flowDiv3");
     bar = document.getElementById("barDiv");
     bar2 = document.getElementById("barDiv2");
+    bar3 = document.getElementById("barDiv3");
     flow.style.left = 110 + 'px';
     flow2.style.left = 220 + 'px';
     flow3.style.left = 400 + 'px';
     bar.style.left = 165 + 'px';
     bar2.style.left = 400 + 'px';
+    bar3.style.left = 165 + 'px';
     flow.style.top = 300 + 'px';
     flow2.style.top = 300 + 'px';
     flow3.style.top = 300 + 'px';
     bar.style.top = 150 + 'px';
     bar2.style.top = 150 + 'px';
+    bar3.style.top = 240 + 'px';
     bar.style.opacity = "0.1";
     bar2.style.opacity = "0.1";
+    bar3.style.opacity = "0.6";
     doUpHelper();
 
     foo = document.getElementById("testDiv");
@@ -84,14 +89,20 @@ $(document).ready(function() {
         flow.style.top = parseInt(flow.style.top) + 1 + 'px';
         flow2.style.top = parseInt(flow2.style.top) + 1 + 'px';
         flow3.style.top = parseInt(flow3.style.top) + 1 + 'px';
-        bar.style.top = parseInt(bar.style.top) + 2 + 'px';
+        bar.style.top = parseInt(bar.style.top) + 1 + 'px';
         bar.style.opacity = "" + (parseInt(bar.style.top) - 150) / 200;
         bar2.style.opacity = "" + (parseInt(bar2.style.top) - 150) / 200 ;
+        bar3.style.opacity = "" + (parseInt(bar3.style.top) - 150) / 200 ;
         if (parseInt(bar.style.top) > 330) {
             bar.style.opacity = "0.1";
             bar.style.top = 150 + 'px';
         }
         bar2.style.top = parseInt(bar2.style.top) + 1 + 'px';
+        bar3.style.top = parseInt(bar3.style.top) + 1 + 'px';
+        if (parseInt(bar3.style.top) > 330) {
+            bar3.style.opacity = "0.1";
+            bar3.style.top = 150 + 'px';
+        }
         if (parseInt(flow.style.top) < 480) {
             setTimeout(doUpHelper, 20);
         } else {
@@ -105,3 +116,44 @@ $(document).ready(function() {
         }
     }
 });
+
+//Make an SVG Container
+ var svgContainer = d3.select("#timeLine").append("svg")
+                                     .attr("width", 400)
+                                     .attr("height", 300);
+
+ //Draw the Rectangle
+ var time1 = svgContainer.append("rect")
+                             .attr("x", 10)
+                             .attr("y", 30)
+                             .attr("width", 50)
+                             .attr("height", 50)
+                             .style("fill", 'green');
+
+var time2 = svgContainer.append("rect")
+                             .attr("x", 100)
+                             .attr("y", 30)
+                             .attr("width", 50)
+                             .attr("height", 50)
+                             .style("fill", 'green');
+var time2 = svgContainer.append("rect")
+                            .attr("x", 190)
+                            .attr("y", 30)
+                            .attr("width", 50)
+                            .attr("height", 50)
+                            .style("fill", 'green');
+var lineData = [ { "x": 1,   "y": 25},  { "x": 245,  "y": 25}, { "x": 245,  "y": 5},
+    { "x": 270,  "y": 55}, { "x": 245,  "y": 105}, { "x": 245,  "y": 85}, { "x": 1,   "y": 85}];
+
+//This is the accessor function we talked about above
+var lineFunction = d3.svg.line()
+    .x(function(d) { return d.x; })
+    .y(function(d) { return d.y; })
+    .interpolate("linear");
+
+//The line SVG Path we draw
+var lineGraph = svgContainer.append("path")
+                            .attr("d", lineFunction(lineData))
+                            .attr("stroke", "blue")
+                            .attr("stroke-width", 2)
+                            .attr("fill", "none");
