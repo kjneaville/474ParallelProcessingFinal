@@ -45,15 +45,23 @@ $(document).ready(function() {
     ];
 
     var margin = {top: 15, right: 0, bottom: 10, left: 0},
-// width = 1200 - margin.right - margin.left,
-// height = 900 - margin.top - margin.bottom;
-        width = 400,
-        height = 400;
+    // var margin = {top: 140, right: 10, bottom: 140, left: 10},
+    width = 500 - margin.right - margin.left,
+    height = 500 - margin.top - margin.bottom;
+        // width = 400,
+        // height = 400;
+        
+    var orientations = {
+        "bottom-to-top": {
+            
+        }
+    }    
 
     var i = 0;
 
     var tree = d3.layout.tree()
         .size([height, width]);
+
 
     var diagonal = d3.svg.diagonal()
         .projection(function(d) { return [d.x, d.y]; });
@@ -105,4 +113,30 @@ $(document).ready(function() {
     }
 
 // TO DO: add nodes with multiple parents to show the complete divide-n-conquer process
+// The second reverse tree
+
+
+    var reverse_margin = {top: 15, right: 0, bottom: 10, left: 0},
+        reverse_width = 400,
+        reverse_height = 400;
+
+    var i = 0;
+
+    var tree = d3.layout.tree()
+        .size([height, width]);
+
+    var diagonal = d3.svg.diagonal()
+        .projection(function(d) { return [d.x, d.y]; });
+
+    var treeChart = d3.select("#treeExample")
+        .append("svg")
+        .attr("width", width + margin.right + margin.left)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var root = reverse_treeData[0];
+
+    update(root);
 });
+
