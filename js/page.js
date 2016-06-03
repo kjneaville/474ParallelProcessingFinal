@@ -115,46 +115,72 @@ $(document).ready(function() {
             doUpHelper();
         }
     }
+
+   task1 = document.getElementById("task1Div");
+   task2 = document.getElementById("task2Div");
+   squareDiv = document.getElementById("squareDiv");
+   task1.style.left = 450 + "px";
+   task1.style.top = 3200 + "px";
+   task2.style.left = 800 + "px";
+   task2.style.top = 3200 + "px";
+   squareDiv.style.top = 3190 + "px";
+   squareDiv.style.left = 600 + "px";
+   lockAnim();
+
+   function lockAnim() {
+    if (parseInt(task1.style.left) < 570)
+           task1.style.left = parseInt(task1.style.left) + 1 + 'px';
+       if (parseInt(task2.style.left) > 650) {
+        task2.style.left = parseInt(task2.style.left) - 1 + 'px';
+        setTimeout(lockAnim, 20);
+    } else {
+        clearTimeout(lockAnim);
+        setTimeout(lockAnim2, 2000);
+    }
+   }
+
+   function lockAnim2() {
+    if (parseInt(task2.style.left) == 650) {
+        task1.style.left = 450 + "px";
+        task2.style.left = 800 + "px";
+    }
+    if (parseInt(task1.style.left) < 570) {
+           task1.style.left = parseInt(task1.style.left) + 1 + 'px';
+        task2.style.left = parseInt(task2.style.left) - 1 + 'px';
+        setTimeout(lockAnim2, 20);
+    } else {
+        clearTimeout(lockAnim2);
+        setTimeout(lockAnim3, 2000);
+    }
+   }
+
+   function lockAnim3() {
+    task1.style.visibility = "hidden";
+    task2.style.left = parseInt(task2.style.left) - 1 + 'px';
+
+    if (parseInt(task2.style.left) > 650) {
+        setTimeout(lockAnim3, 20);
+    } else {
+        clearTimeout(lockAnim3);
+        setTimeout(hideTask2, 1000);
+        setTimeout(reset, 1500);
+        setTimeout(lockAnim, 1600);
+    }
+   }
+
+   function reset() {
+    task1.style.visibility = "visible";
+    task2.style.visibility = "visible";
+    task1.style.left = 450 + "px";
+    task2.style.left = 800 + "px";
+   }
+   
+   function hideTask2() {
+    task2.style.visibility = "hidden";
+   }
 });
 
-// todo this needs to be encapsulated.
 //Make an SVG Container
  var svgContainer = d3.select("#timeLine").append("svg")
                                      .attr("width", 400)
                                      .attr("height", 300);
-
- //Draw the Rectangle
- var time1 = svgContainer.append("rect")
-                             .attr("x", 10)
-                             .attr("y", 30)
-                             .attr("width", 50)
-                             .attr("height", 50)
-                             .style("fill", 'green');
-
-var time2 = svgContainer.append("rect")
-                             .attr("x", 100)
-                             .attr("y", 30)
-                             .attr("width", 50)
-                             .attr("height", 50)
-                             .style("fill", 'green');
-var time2 = svgContainer.append("rect")
-                            .attr("x", 190)
-                            .attr("y", 30)
-                            .attr("width", 50)
-                            .attr("height", 50)
-                            .style("fill", 'green');
-var lineData = [ { "x": 1,   "y": 25},  { "x": 245,  "y": 25}, { "x": 245,  "y": 5},
-    { "x": 270,  "y": 55}, { "x": 245,  "y": 105}, { "x": 245,  "y": 85}, { "x": 1,   "y": 85}];
-
-//This is the accessor function we talked about above
-var lineFunction = d3.svg.line()
-    .x(function(d) { return d.x; })
-    .y(function(d) { return d.y; })
-    .interpolate("linear");
-
-//The line SVG Path we draw
-var lineGraph = svgContainer.append("path")
-                            .attr("d", lineFunction(lineData))
-                            .attr("stroke", "blue")
-                            .attr("stroke-width", 2)
-                            .attr("fill", "none");

@@ -36,16 +36,17 @@ var app = angular.module('app', [])
         // todo Text for each section, this is where descriptions should go. //
         ///////////////////////////////////////////////////////////////////////
         $scope.sectionText = [
-            {text:'Section 0'},
-            {text:'Section 1'},
-            {text:'Section 2'},
-            {text:'Section 3'}
+            {text:'Divide and Conquer is an algorithm design paradigm based on multi-branched recursion. A divide and conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. The solutions to the sub-problems are then combined to give a solution to the original problem.'},
+            {text:'A data race occurs when: two or more threads in a single process access the same memory location concurrently, and. at least one of the accesses is for writing, and. the threads are not using any exclusive locks to control their accesses to that memory.'},
+            {text:"Parallelism is when tasks literally run at the same time, eg. on a multicore processor. Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn't necessarily mean they'll ever both be running at the same instant. Problems arise when two parallel processes attempt to alter the same data. The output can be different than expected when parallel processes happen out of the expected order. One solution to this problem is locking, which prevents processes from accesing data until the first process has finished."},
+            {text:'In the real world, many complex, interrelated events are all occuring independently at the same time. Parallel computing gives us a much better model to simulate and understand real world phenomenon.'},
+            {text:'Created by Kenneth Neaville, Jason Ho, Omar Rojas, and Sophie Zeng for Informatics 474 Spring 2016.'}
         ];
 
         // Desired section height
         // todo decide how tall sections should be and what header we want before charts start appearing
-        $scope.sectionHeight = 400;
-        $scope.headerHeight = 0;
+        $scope.sectionHeight = 600;
+        $scope.headerHeight = 1400;
     })
 
     // Scroll directive
