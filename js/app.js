@@ -14,10 +14,23 @@ var app = angular.module('app', [])
         // todo add 'data' or whatever you need to make your chart run. Make sure it lines up with the section you chart exists in //
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $scope.data = [
-            {id:0, text:'Paragraph 0'},
-            {id:1, text:'Paragraph 1'},
-            {id:2, text:'Paragraph 2'},
-            {id:3, text:'Paragraph 3'}
+            [
+                {id:0, text:'Paragraph 0'},
+                {id:1, text:'Paragraph 1'},
+                {id:2, text:'Paragraph 2'},
+                {id:3, text:'Paragraph 3'}
+            ],
+            [],
+            [
+                {id:0, text:'Paragraph 0'},
+                {id:1, text:'Paragraph 1'},
+                {id:2, text:'Paragraph 2'},
+                {id:3, text:'Paragraph 3'}
+            ],
+            [],
+            [],
+            [],
+            []
         ];
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,9 +38,12 @@ var app = angular.module('app', [])
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $scope.chartParams = [
             {chart: 'example', color:'red', fontSize:20, filter:function(d){return d}},
-            {chart: 'example', color:'blue', fontSize:10, filter:function(d){return d.id>2}},
+            {chart: 'empty', color:'blue', fontSize:10, filter:function(d){return d.id>2}},
             {chart: 'example', color:'orange', fontSize:100, filter:function(d){return d.id<3}},
-            {chart: 'example', color:'green', fontSize:30, filter:function(d){return d}}
+            {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
+            {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
+            {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
+            {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}}
         ];
 
         $scope.step = 0;
@@ -58,6 +74,9 @@ var app = angular.module('app', [])
             link:function(scope, elem) {
                 angular.element($window).bind("scroll", function() {
                     scope.step = Math.ceil((this.pageYOffset - scope.headerHeight) / scope.sectionHeight);
+                    if(scope.step < 0) {
+                        scope.step = 0;
+                    }
                     scope.$apply();
                 });
             }
@@ -77,11 +96,15 @@ var app = angular.module('app', [])
                     var chart = null;
 
                     // switch chart type depending on step, also apply any specific properties we need to
+                    console.log(scope.step);
                     switch(scope.chartParams[scope.step].chart) {
                         case 'example':
                             var color = scope.chartParams[scope.step].color;
                             var fontSize = scope.chartParams[scope.step].fontSize;
                             chart = ParagraphChart().color(color).fontSize(fontSize);
+                            break;
+                        case 'empty':
+                            chart = EmptyChart();
                             break;
                         default:
                             // this should never happen. Something went terribly wrong if this ran
@@ -89,7 +112,7 @@ var app = angular.module('app', [])
                     
                     // todo data needs to change, not filter on what is already there.
                     // todo data will need to be an array indexed on step.
-                    var data = scope.data.filter(scope.chartParams[scope.step].filter);
+                    var data = scope.data[scope.step];
 
                     // Wrapper element to put your svg (chart) in
                     wrapper = d3.select(elem[0])
