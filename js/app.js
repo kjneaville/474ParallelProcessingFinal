@@ -37,9 +37,9 @@ var app = angular.module('app', [])
         // todo parameters for the chart directive. This will tell the directive which chart to display and what properties that chart will have //
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $scope.chartParams = [
-            {chart: 'example', color:'red', fontSize:20, filter:function(d){return d}},
+            {chart: 'empty', color:'red', fontSize:20, filter:function(d){return d}},
             {chart: 'empty', color:'blue', fontSize:10, filter:function(d){return d.id>2}},
-            {chart: 'example', color:'orange', fontSize:100, filter:function(d){return d.id<3}},
+            {chart: 'empty', color:'orange', fontSize:100, filter:function(d){return d.id<3}},
             {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
             {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
             {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
