@@ -120,10 +120,10 @@ $(document).ready(function() {
    task2 = document.getElementById("task2Div");
    squareDiv = document.getElementById("squareDiv");
    task1.style.left = 450 + "px";
-   task1.style.top = 3200 + "px";
+   task1.style.top = 4500 + "px";
    task2.style.left = 800 + "px";
-   task2.style.top = 3200 + "px";
-   squareDiv.style.top = 3190 + "px";
+   task2.style.top = 4500 + "px";
+   squareDiv.style.top = 4490 + "px";
    squareDiv.style.left = 600 + "px";
    lockAnim();
 

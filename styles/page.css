@@ -59,6 +59,15 @@ background-color:#4CAF50;
     width: 600px;
     font-size: 12px;
 }
+#captionLock {
+    position: absolute;
+    padding: 20px;
+    text-align: center;
+    left: 25%;
+    top: 4600px;
+    width: 600px;
+    font-size: 12px;
+}
 
 #basicAnim {
     position: absolute;
@@ -147,17 +156,23 @@ background-color:#4CAF50;
 }
 #race-head {
     position: relative;
-    top: 800px;
+    top: 1990px;
+    padding: 0px;
+}
+
+#racePic {
+    position: relative;
+    top: 2200px;
     padding: 0px;
 }
 #lock-head {
     position: relative;
-    top: 1350px;
+    top: 2350px;
     padding: 0px;
 }
 #question-head {
     position: relative;
-    top: 1900px;
+    top: 2900px;
     padding: 0px;
 }
 #solSys{
