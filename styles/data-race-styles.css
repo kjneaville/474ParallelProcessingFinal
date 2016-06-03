@@ -1,10 +1,14 @@
 #race-anim {
-    width: 60%;
-    margin: auto;
-}
+     width: 60%;
+     margin: auto;
+ }
 
 .instruction {
     border: solid black 2px;
     margin: 0;
     padding: 1em;
+}
+
+.highlighted-instruction {
+    background-color: green;
 }
