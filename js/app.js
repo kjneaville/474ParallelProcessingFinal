@@ -48,9 +48,10 @@ var app = angular.module('app', [])
 
         $scope.step = 0;
 
-        ///////////////////////////////////////////////////////////////////////
-        // todo Text for each section, this is where descriptions should go. //
-        ///////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //            todo Text for each section, this is where descriptions should go.            //
+        // todo this can be changed to html if you want, you need to modiy index for that to work. //
+        /////////////////////////////////////////////////////////////////////////////////////////////
         $scope.sectionText = [
             {text:'Divide and Conquer is an algorithm design paradigm based on multi-branched recursion. A divide and conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. The solutions to the sub-problems are then combined to give a solution to the original problem.'},
             {text:'A data race occurs when: two or more threads in a single process access the same memory location concurrently, and. at least one of the accesses is for writing, and. the threads are not using any exclusive locks to control their accesses to that memory.'},
@@ -96,25 +97,26 @@ var app = angular.module('app', [])
                 // Use the scope.$watch method to watch for changes to the step, then re-draw your chart
                 scope.$watch('step', function() {
                     var chart = null;
+                    var data = null;
 
+                    // todo cases for all chart types
                     // switch chart type depending on step, also apply any specific properties we need to
+                    // you set the data inside the case for your chart. It can be set to anything, doesn't have to be from the data array
                     console.log(scope.step);
                     switch(scope.chartParams[scope.step].chart) {
                         case 'example':
+                            data = scope.data[scope.step];
                             var color = scope.chartParams[scope.step].color;
                             var fontSize = scope.chartParams[scope.step].fontSize;
                             chart = ParagraphChart().color(color).fontSize(fontSize);
                             break;
                         case 'empty':
+                            data = scope.data[scope.step];
                             chart = EmptyChart();
                             break;
                         default:
                             // this should never happen. Something went terribly wrong if this ran
                     }
-                    
-                    // todo data needs to change, not filter on what is already there.
-                    // todo data will need to be an array indexed on step.
-                    var data = scope.data[scope.step];
 
                     // Wrapper element to put your svg (chart) in
                     wrapper = d3.select(elem[0])
