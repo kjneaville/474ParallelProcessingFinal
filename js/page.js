@@ -33,6 +33,12 @@ $(document).ready(function() {
         .attr("y", 300)
         .attr("height", 100)
         .attr("width", 70);
+    
+    rectDemo.append("svg:rect")
+        .attr("x", 310)
+        .attr("y", 100)
+        .attr("height", 300)
+        .attr("width", 5);
 
     var flow;
     var flow2;
