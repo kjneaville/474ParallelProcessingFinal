@@ -1,0 +1,36 @@
+[
+    {   
+        "name": "0",
+        "text" : "problem",
+        "parents": [
+        {
+            "name": "1A",
+            "text" : "subproblem",
+            "parents": [
+            {
+                "name": "2A",
+                "text" : "subproblem"
+            },
+            {
+                "name": "2B",
+                "text" : "subproblem"
+            }
+            ]
+        },
+        {
+            "name": "1B",
+            "text" : "subproblem",
+            "parents": [
+            {
+                "name": "2C",
+                "text" : "subproblem"
+            },
+            {
+                "name": "2D",
+                "text" : "subproblem"
+            }
+            ]
+        }
+        ]
+    }
+]
