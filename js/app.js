@@ -33,6 +33,12 @@ var app = angular.module('app', [])
             []
         ];
 
+        $scope.animData = {
+            circle1: [{id: 0}],
+            circle2: [{id: 1}],
+            square: [{id: 2}]
+        };
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // todo parameters for the chart directive. This will tell the directive which chart to display and what properties that chart will have //
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,8 +48,10 @@ var app = angular.module('app', [])
             {chart: 'empty', color:'orange', fontSize:100, filter:function(d){return d.id<3}},
             {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
             {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
-            {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
-            {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}}
+            {chart: 'lockingAnim'},
+            {chart: 'lockingAnim'},
+            {chart: 'lockingAnim'},
+            {chart: 'lockingAnim'}
         ];
 
         $scope.step = 0;
@@ -57,7 +65,14 @@ var app = angular.module('app', [])
             {text:'A data race occurs when: two or more threads in a single process access the same memory location concurrently, and. at least one of the accesses is for writing, and. the threads are not using any exclusive locks to control their accesses to that memory.'},
             {text:"Parallelism is when tasks literally run at the same time, eg. on a multicore processor. Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn't necessarily mean they'll ever both be running at the same instant. Problems arise when two parallel processes attempt to alter the same data. The output can be different than expected when parallel processes happen out of the expected order. One solution to this problem is locking, which prevents processes from accesing data until the first process has finished."},
             {text:'In the real world, many complex, interrelated events are all occuring independently at the same time. Parallel computing gives us a much better model to simulate and understand real world phenomenon.'},
-            {text:'Created by Kenneth Neaville, Jason Ho, Omar Rojas, and Sophie Zeng for Informatics 474 Spring 2016.'}
+            {text: "Scroll down to see an animation of locking and why it's important. The orange square represents data and the black circles represent parallel processes."},
+            {text: "In this case, 2 parallel processes attempt to alter the same data at once. This can cause serious problems."},
+            {text: "One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished."},
+            {text: "Now that the first process has finished, the second process can now alter the data."},
+            {text:'Problems arise when two parallel processes attempt to alter the same data. The output can be different than expected when parallel processes happen at the same time.'},
+            {text:'One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished.'},
+            {text:'One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished.'},
+            {text:'Created by Kenneth Neaville, Jason Ho, Omar Rojas, and Sophie Zeng for Informatics 474 Spring 2016.'},
         ];
 
         // Desired section height
@@ -104,14 +119,56 @@ var app = angular.module('app', [])
                     // you set the data inside the case for your chart. It can be set to anything, doesn't have to be from the data array
                     console.log(scope.step);
                     switch(scope.chartParams[scope.step].chart) {
-                        case 'example':
-                            data = scope.data[scope.step];
-                            var color = scope.chartParams[scope.step].color;
-                            var fontSize = scope.chartParams[scope.step].fontSize;
-                            chart = ParagraphChart().color(color).fontSize(fontSize);
+                        case 'lockingAnim':
+                            var initStep = 5
+                            switch(scope.step) {
+                                case initStep:
+                                    scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
+                                    scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
+                                    scope.animData.square[0].prePosition = scope.animData.square[0].position;
+                                    scope.animData.circle1[0].position = 150;
+                                     scope.animData.circle1[0].circRad = 20;
+                                    scope.animData.circle2[0].position = 400;
+                                    scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].colorSquare = 'orange';
+                                    break;
+                                case initStep + 1:
+                                    scope.animData.circle1[0].prePosition = 150;
+                                    scope.animData.circle2[0].prePosition = 400;
+                                    scope.animData.square[0].prePosition = 250;
+                                    scope.animData.circle1[0].position = 240;
+                                     scope.animData.circle1[0].circRad = 20;
+                                    scope.animData.circle2[0].position = 310;
+                                    scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].colorSquare = 'red';
+                                    break;
+                                case initStep + 2:
+                                    scope.animData.circle1[0].prePosition = 150;
+                                    scope.animData.circle2[0].prePosition = 400;
+                                    scope.animData.square[0].prePosition = 250;
+                                    scope.animData.circle1[0].position = 240;
+                                     scope.animData.circle1[0].circRad = 20;
+                                    scope.animData.circle2[0].position = 350;
+                                    scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].colorSquare = 'green';
+                                    break;
+                                case initStep + 3:
+                                    scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
+                                    scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
+                                    scope.animData.square[0].prePosition = scope.animData.square[0].position;
+                                    scope.animData.circle1[0].circRad = 0;
+                                    scope.animData.circle2[0].position = 310;
+                                    scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].colorSquare = 'green';
+                                    break;
+                                default:
+                                    break;
+                            }
+                            data = scope.animData;
+                            chart = LockingAnim();
                             break;
                         case 'empty':
-                            data = scope.data[scope.step];
+                            data = [];
                             chart = EmptyChart();
                             break;
                         default:

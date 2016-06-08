@@ -15,8 +15,9 @@ h1 {
 }
 
 ul {
+    width: 100%;
     list-style-type: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     overflow: hidden;
     background-color: #333;
@@ -24,6 +25,7 @@ ul {
 
 li {
     float: left;
+    width: 14%;
 }
 
 li a {
@@ -178,4 +180,8 @@ background-color:#4CAF50;
 #solSys{
     position: relative;
     bottom: 1150px;
+}
+.chart {
+    position: relative;
+    left: 25%;
 }

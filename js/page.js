@@ -121,7 +121,8 @@ $(document).ready(function() {
             doUpHelper();
         }
     }
-
+});
+/*
    task1 = document.getElementById("task1Div");
    task2 = document.getElementById("task2Div");
    squareDiv = document.getElementById("squareDiv");
@@ -186,7 +187,6 @@ $(document).ready(function() {
    }
 });
 
-//Make an SVG Container
  var svgContainer = d3.select("#timeLine").append("svg")
                                      .attr("width", 400)
-                                     .attr("height", 300);
+                                     .attr("height", 300);*/
