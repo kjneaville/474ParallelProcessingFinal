@@ -1,21 +1,6 @@
-$(function() {
-	d3.json("./data/top-bottom-tree.json", function(error, root) {
-		if(error) throw error;
-		
-		// Create an instance of the tree chart
-		var chart1 = TreeChart();
-		
-		// Select the container div, bind the data (datum) to it,
-  		// then call the instantiation of the tree chart function
-		var chartWrapper = d3.select("#treeExample")
-			.datum(root).
-			call(chart1);
-	});
-});
-
-
 // function that returns a top-to-bottom tree
 var TreeChart = function () {
+	// Sets default values
 	var width, height, margin, linkColor, bgcolor;
 	
 	// Margin: how much space to put in the SVG for axes/titles
@@ -25,22 +10,21 @@ var TreeChart = function () {
 	width = 900 - margin.left - margin.right;
 	height = 500 - margin.top - margin.bottom;
 	
-	// margin = {top: 100, right: 50, bottom: 100, left: 50},
-	// width = 900 - margin.left - margin.right,
-	// height = 500 - margin.top - margin.bottom;
-	
+	// Color of the edges
 	linkColor = "#000";
+	
+	// Background color of the node
 	bgcolor = "#2c2c2c"
 	
+	// Internal function that gets returned
 	var chart = function(selection) {
 		// Loop through selections and data bound to each element
 		selection.each(function(root) {
 			// Select `this` as the element in which you want to render your chart
-     		var div = d3.select(this);		// container	
-			
-			var margin = {top: 100, right: 50, bottom: 100, left: 50},
-				width = 900 - margin.left - margin.right,
-				height = 500 - margin.top - margin.bottom;
+     		var div = d3.select(this);		// container			
+			margin = {top: 100, right: 50, bottom: 100, left: 50};
+			width = 900 - margin.left - margin.right;
+			height = 500 - margin.top - margin.bottom;
 			
 			var tree = d3.layout.tree()
 				.separation(function(a, b) { return a.parent === b.parent ? 1 : 1.2; })
@@ -49,9 +33,6 @@ var TreeChart = function () {
 					
 	        // Selection of SVG elements in DIV (making sure not to re-append svg)		 
 			var svg = div.append("svg")
-				//d3.select("#treeExample")
-				//.append("svg")
-				// .attr("bgcolor", "#2c2c2c")
 				.attr("bgcolor", bgcolor)
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom)
@@ -59,11 +40,11 @@ var TreeChart = function () {
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 			
 			// var nodes = tree.nodes(getData2());
-			var nodes = tree.nodes(root);
+			var nodes = tree.nodes(root[0]);
 			
-			var node = svg.selectAll(".node")
-				.data(nodes)
-				.enter()
+			var node = svg.selectAll(".node").data(nodes);
+			
+			node.enter()
 				.append("g");
 				
 			node.append("rect")
@@ -80,15 +61,15 @@ var TreeChart = function () {
 				.style("text-anchor", "middle")
 				.text(function(d) { return d.text ;});
 			
-			var link = svg.selectAll(".link")
-				.data(tree.links(nodes))
-				.enter()
+			var link = svg.selectAll(".link").data(tree.links(nodes));
+				
+			link.enter()
 				.insert("path", "g")
 				.attr("fill", "none")
-				.attr("stroke", "linkColor")
+				.attr("stroke", linkColor)
 				.attr("shape-rendering", "crispEdges")
 				.attr("d", connect2);
-    
+			
 			function connect2(d, i) {
 				return     "M" + d.source.x + "," + ( d.source.y)
 						+ "V" + ((3*d.source.y + 4*d.target.y)/7)
@@ -98,7 +79,9 @@ var TreeChart = function () {
 			
 			// Use the .exit() and .remove() methods to remove elements that are no longer in the data
 			node.exit().remove();
-            link.exit().remove();
+            link.exit().remove();           
+			// test
+			console.log(root[0]);
 		})
 	};
 	

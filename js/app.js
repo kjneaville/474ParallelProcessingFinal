@@ -171,6 +171,8 @@ var app = angular.module('app', [])
                             data = [];
                             chart = EmptyChart();
                             break;
+                        case 'tree':
+                            
                         default:
                             // this should never happen. Something went terribly wrong if this ran
                     }
