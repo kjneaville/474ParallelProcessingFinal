@@ -39,10 +39,23 @@ var TreeChart = function () {
 				.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 			
-			// var nodes = tree.nodes(getData2());
 			var nodes = tree.nodes(root[0]);
 			
 			var node = svg.selectAll(".node").data(nodes);
+//			
+			node.exit()
+				.transition()
+				.duration(400)
+				.style("opacity", 0)
+				.delay(400)
+				.remove();
+
+			node
+				.transition()
+				.delay(400)
+				.duration(800)
+				.attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; });
+//
 			
 			node.enter()
 				.append("g");
@@ -52,24 +65,52 @@ var TreeChart = function () {
 				.attr("height", 80)
 				.attr("fill", "tan")
 				.attr("x", function(d) { return d.x - 70; })
-				.attr("y", function(d) { return d.y - 40; });
+				.attr("y", function(d) { return d.y - 40; })
+				//
+				.style("opacity", 0)
+				.transition()
+				.duration(600)
+				.delay(function(d,i) {
+					return 24*i;
+				})
+				.style("opacity", 1);
 				
 			node.append("text")
 				.attr("font-size", "12px")
 				.attr("x", function(d) { return d.x; })
 				.attr("y", function(d) { return 10 + d.y; })
 				.style("text-anchor", "middle")
-				.text(function(d) { return d.text ;});
+				.text(function(d) { return d.text ;})
+				.style("opacity", 0)
+				.transition()
+				.duration(600)
+				.delay(function(d,i) {
+					return 24*i;
+				})
+				.style("opacity", 1);
 			
 			var link = svg.selectAll(".link").data(tree.links(nodes));
+			
+			link.transition()
+				.delay(400)
+				.duration(600)
+				.attr("d", connect2);
 				
 			link.enter()
 				.insert("path", "g")
 				.attr("fill", "none")
 				.attr("stroke", linkColor)
 				.attr("shape-rendering", "crispEdges")
-				.attr("d", connect2);
-			
+				.attr("d", connect2)
+				.style("opacity", 0)
+				.transition()
+				.duration(1600)
+				.delay(function(d,i) {
+					return 24*i;
+				})
+				.style("opacity", 1);
+				
+
 			function connect2(d, i) {
 				return     "M" + d.source.x + "," + ( d.source.y)
 						+ "V" + ((3*d.source.y + 4*d.target.y)/7)
@@ -77,9 +118,15 @@ var TreeChart = function () {
 						+ "V" + (d.target.y);
 			};
 			
+			link.exit()
+				.transition()
+				.duration(600)
+				.style("opacity", 0)
+				.delay(400)
+     			.remove();
 			// Use the .exit() and .remove() methods to remove elements that are no longer in the data
-			node.exit().remove();
-            link.exit().remove();           
+			// node.exit().remove();
+            // link.exit().remove();           
 			// test
 			console.log(root[0]);
 		})
