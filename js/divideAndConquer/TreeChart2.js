@@ -1,3 +1,4 @@
+/* global color */
 // function that returns a bottom-to-top tree
 
 var TreeChart2 = function () {
@@ -5,7 +6,7 @@ var TreeChart2 = function () {
 	var width, height, margin, linkColor, bgcolor;
 	
 	// Margin: how much space to put in the SVG for axes/titles
-	margin = {top: 100, right: 50, bottom: 100, left: 50};
+	margin = {top: 50, right: 50, bottom: 100, left: 50};
 	
 	// Height/width of the drawing area for data symbols
 	width = 900 - margin.left - margin.right;
@@ -24,14 +25,16 @@ var TreeChart2 = function () {
 			// Select `this` as the element in which you want to render your chart
      		var div = d3.select(this);		// container			 
 			
-			margin = {top: 100, right: 50, bottom: 100, left: 50};
+			margin = {top: 50, right: 50, bottom: 100, left: 50};
 			width = 900 - margin.left - margin.right;
 			height = 500 - margin.top - margin.bottom;
 			
 			var tree = d3.layout.tree()
 				.separation(function(a, b) { return a.parent === b.parent ? 1 : 1.2; })
 				.children(function(d) { return d.parents; })
-				.size([width, height]);			
+				.size([width, height]);		
+				
+			var color = d3.scale.category10();	
 					
 	        // Selection of SVG elements in DIV (making sure not to re-append svg)		 
 			var svg = div.append("svg")
@@ -66,7 +69,9 @@ var TreeChart2 = function () {
 			node.append("rect")
 				.attr("width", 140)
 				.attr("height", 80)
-				.attr("fill", "tan")
+			    .attr("fill", function(d) {
+					return color(3 - d.depth)
+				})
 				.attr("x", function(d) { return d.x - 70; })
 				.attr("y", function(d) { return height - d.y - 40; })
 				//

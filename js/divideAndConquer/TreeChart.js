@@ -22,15 +22,17 @@ var TreeChart = function () {
 		selection.each(function(root) {
 			// Select `this` as the element in which you want to render your chart
      		var div = d3.select(this);		// container			
-			margin = {top: 100, right: 50, bottom: 100, left: 50};
+			margin = {top: 100, right: 50, bottom: 50, left: 50};
 			width = 900 - margin.left - margin.right;
 			height = 500 - margin.top - margin.bottom;
 			
 			var tree = d3.layout.tree()
 				.separation(function(a, b) { return a.parent === b.parent ? 1 : 1.2; })
 				.children(function(d) { return d.parents; })
-				.size([width, height]);			
-					
+				.size([width, height]);		
+				
+			var color = d3.scale.category10();
+						
 	        // Selection of SVG elements in DIV (making sure not to re-append svg)		 
 			var svg = div.append("svg")
 				.attr("bgcolor", bgcolor)
@@ -42,6 +44,7 @@ var TreeChart = function () {
 			var nodes = tree.nodes(root[0]);
 			
 			var node = svg.selectAll(".node").data(nodes);
+			
 //			
 			node.exit()
 				.transition()
@@ -63,7 +66,10 @@ var TreeChart = function () {
 			node.append("rect")
 				.attr("width", 140)
 				.attr("height", 80)
-				.attr("fill", "tan")
+			    .attr("fill", function(d) {
+					return color(d.depth)
+				})
+
 				.attr("x", function(d) { return d.x - 70; })
 				.attr("y", function(d) { return d.y - 40; })
 				//
@@ -100,6 +106,7 @@ var TreeChart = function () {
 				.insert("path", "g")
 				.attr("fill", "none")
 				.attr("stroke", linkColor)
+				// .attr("stroke", function(d) {return color(d.source.depth); })
 				.attr("shape-rendering", "crispEdges")
 				.attr("d", connect2)
 				.style("opacity", 0)
