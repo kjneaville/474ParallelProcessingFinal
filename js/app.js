@@ -43,15 +43,15 @@ var app = angular.module('app', [])
         // todo parameters for the chart directive. This will tell the directive which chart to display and what properties that chart will have //
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $scope.chartParams = [
-            {chart: 'empty', color:'red', fontSize:20, filter:function(d){return d}},
-            {chart: 'empty', color:'blue', fontSize:10, filter:function(d){return d.id>2}},
-            {chart: 'empty', color:'orange', fontSize:100, filter:function(d){return d.id<3}},
-            {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
-            {chart: 'empty', color:'green', fontSize:30, filter:function(d){return d}},
+            {chart: 'empty'},
             {chart: 'lockingAnim'},
             {chart: 'lockingAnim'},
             {chart: 'lockingAnim'},
-            {chart: 'lockingAnim'}
+            {chart: 'lockingAnim'},
+            {chart: 'lockingAnim'},
+            {chart: 'lockingAnim'},
+            {chart: 'lockingAnim'},
+            {chart: 'empty'}
         ];
 
         $scope.step = 0;
@@ -62,23 +62,17 @@ var app = angular.module('app', [])
         /////////////////////////////////////////////////////////////////////////////////////////////
         $scope.sectionText = [
             {text:'Divide and Conquer is an algorithm design paradigm based on multi-branched recursion. A divide and conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. The solutions to the sub-problems are then combined to give a solution to the original problem.'},
-            {text:'A data race occurs when: two or more threads in a single process access the same memory location concurrently, and. at least one of the accesses is for writing, and. the threads are not using any exclusive locks to control their accesses to that memory.'},
-            {text:"Parallelism is when tasks literally run at the same time, eg. on a multicore processor. Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn't necessarily mean they'll ever both be running at the same instant. Problems arise when two parallel processes attempt to alter the same data. The output can be different than expected when parallel processes happen out of the expected order. One solution to this problem is locking, which prevents processes from accesing data until the first process has finished."},
-            {text:'In the real world, many complex, interrelated events are all occuring independently at the same time. Parallel computing gives us a much better model to simulate and understand real world phenomenon.'},
-            {text: "Scroll down to see an animation of locking and why it's important. The orange square represents data and the black circles represent parallel processes."},
-            {text: "In this case, 2 parallel processes attempt to alter the same data at once. This can cause serious problems."},
-            {text: "One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished."},
-            {text: "Now that the first process has finished, the second process can now alter the data."},
-            {text:'Problems arise when two parallel processes attempt to alter the same data. The output can be different than expected when parallel processes happen at the same time.'},
-            {text:'One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished.'},
-            {text:'One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished.'},
-            {text:'Created by Kenneth Neaville, Jason Ho, Omar Rojas, and Sophie Zeng for Informatics 474 Spring 2016.'},
+            {head:'Data Races & Locking', cla:'leftLock', text:"A data race occurs when: two or more threads in a single process access the same memory location concurrently. Here we will illustrate this occurence. Scroll down to see an animation of locking and why it's important. The orange square represents data and the black circles represent parallel processes."},
+            {cla:'leftLock', text: "Problems arise when two parallel processes attempt to alter the same data at once. The output can be different than expected when parallel processes happen out of the expected order. This can cause serious problems, such as data corruption."},
+            {cla:'leftLock', text: "One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished."},
+            {cla:'leftLock', text: "Now that the first process has finished, the second process can now alter the data. One solution to this problem is locking, which prevents processes from accesing data until the first process has finished."},
+            {head: 'Why is this important?', text:'Many companies are investing millions into expanding their large-scale parallel computing capabilities.'},
+            {text:""}
         ];
-
         // Desired section height
         // todo decide how tall sections should be and what header we want before charts start appearing
-        $scope.sectionHeight = 600;
-        $scope.headerHeight = 1400;
+        $scope.sectionHeight = 400;
+        $scope.headerHeight = 2800;
     })
 
     // Scroll directive
@@ -120,9 +114,10 @@ var app = angular.module('app', [])
                     console.log(scope.step);
                     switch(scope.chartParams[scope.step].chart) {
                         case 'lockingAnim':
-                            var initStep = 5
+                            var initStep = 1
                             switch(scope.step) {
                                 case initStep:
+                                    console.log("first csaseee")
                                     scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
                                     scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
                                     scope.animData.square[0].prePosition = scope.animData.square[0].position;
@@ -130,9 +125,13 @@ var app = angular.module('app', [])
                                      scope.animData.circle1[0].circRad = 20;
                                     scope.animData.circle2[0].position = 400;
                                     scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].opac = 1.0;
+                                    scope.animData.circle1[0].opac = 1.0;
+                                    scope.animData.circle2[0].opac = 1.0;
                                     scope.animData.square[0].colorSquare = 'orange';
                                     break;
                                 case initStep + 1:
+                                console.log("second csaseee")
                                     scope.animData.circle1[0].prePosition = 150;
                                     scope.animData.circle2[0].prePosition = 400;
                                     scope.animData.square[0].prePosition = 250;
@@ -140,6 +139,9 @@ var app = angular.module('app', [])
                                      scope.animData.circle1[0].circRad = 20;
                                     scope.animData.circle2[0].position = 310;
                                     scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].opac = 1.0;
+                                    scope.animData.circle1[0].opac = 1.0;
+                                    scope.animData.circle2[0].opac = 1.0;
                                     scope.animData.square[0].colorSquare = 'red';
                                     break;
                                 case initStep + 2:
@@ -150,6 +152,9 @@ var app = angular.module('app', [])
                                      scope.animData.circle1[0].circRad = 20;
                                     scope.animData.circle2[0].position = 350;
                                     scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].opac = 1.0;
+                                    scope.animData.circle1[0].opac = 1.0;
+                                    scope.animData.circle2[0].opac = 1.0;
                                     scope.animData.square[0].colorSquare = 'green';
                                     break;
                                 case initStep + 3:
@@ -159,6 +164,22 @@ var app = angular.module('app', [])
                                     scope.animData.circle1[0].circRad = 0;
                                     scope.animData.circle2[0].position = 310;
                                     scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].opac = 1.0;
+                                    scope.animData.circle1[0].opac = 1.0;
+                                    scope.animData.circle2[0].opac = 1.0;
+                                    scope.animData.square[0].colorSquare = 'green';
+                                    break;
+                                case initStep + 4:
+                                console.log("LAST");
+                                    scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
+                                    scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
+                                    scope.animData.square[0].prePosition = scope.animData.square[0].position;
+                                    scope.animData.circle1[0].circRad = 0;
+                                    scope.animData.circle2[0].position = 310;
+                                    scope.animData.square[0].position = 250;
+                                    scope.animData.square[0].opac = 0;
+                                    scope.animData.circle1[0].opac = 0;
+                                    scope.animData.circle2[0].opac = 0;
                                     scope.animData.square[0].colorSquare = 'green';
                                     break;
                                 default:

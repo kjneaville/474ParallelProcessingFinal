@@ -6,7 +6,8 @@ var myApp = angular.module('myApp', [])
     $scope.data = [
     {   
         "name": "0",
-        "text" : "problem",
+        "text" : "Problem",
+        "text2" : "[1, 2, 4, 6, 7, 9, 14, 15]"
         "parents": [
         {
             "name": "1A",

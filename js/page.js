@@ -190,3 +190,174 @@ $(document).ready(function() {
  var svgContainer = d3.select("#timeLine").append("svg")
                                      .attr("width", 400)
                                      .attr("height", 300);*/
+
+var pie = new d3pie("pieChart", {
+    "header": {
+        "title": {
+            "text": "Vendors of Parallel Computing Clusters",
+            "fontSize": 24,
+            "font": "open sans"
+        },
+        "subtitle": {
+            "text": "A handful of well known vendors produce large parallel computers as clusters of hardware.",
+            "color": "#999999",
+            "fontSize": 12,
+            "font": "open sans"
+        },
+        "titleSubtitlePadding": 9
+    },
+    "footer": {
+        "color": "#999999",
+        "fontSize": 10,
+        "font": "open sans",
+        "location": "bottom-left"
+    },
+    "size": {
+        "canvasWidth": 590,
+        "pieOuterRadius": "90%"
+    },
+    "data": {
+        "content": [
+            {
+                "label": "HP",
+                "value": 179,
+                "color": "#2484c1"
+            },
+            {
+                "label": "IBM",
+                "value": 153,
+                "color": "#0c6197"
+            },
+            {
+                "label": "Cray Inc.",
+                "value": 62,
+                "color": "#4daa4b"
+            },
+            {
+                "label": "SGI",
+                "value": 23,
+                "color": "#90c469"
+            },
+            {
+                "label": "Bull",
+                "value": 18,
+                "color": "#daca61"
+            },
+            {
+                "label": "Dell",
+                "value": 9,
+                "color": "#e4a14b"
+            },
+            {
+                "label": "Fujitsu",
+                "value": 8,
+                "color": "#e98125"
+            },
+            {
+                "label": "NUDT",
+                "value": 5,
+                "color": "#cb2121"
+            },
+            {
+                "label": "RSC Group",
+                "value": 4,
+                "color": "#830909"
+            },
+            {
+                "label": "Atipa",
+                "value": 3,
+                "color": "#923e99"
+            },
+            {
+                "label": "NEC",
+                "value": 3,
+                "color": "#ae83d5"
+            },
+            {
+                "label": "MEGWARE",
+                "value": 3,
+                "color": "#bf273e"
+            },
+            {
+                "label": "Itautec",
+                "value": 2,
+                "color": "#ce2aeb"
+            },
+            {
+                "label": "T-Platforms",
+                "value": 2,
+                "color": "#bca44a"
+            },
+            {
+                "label": "Hitachi",
+                "value": 2,
+                "color": "#618d1b"
+            },
+            {
+                "label": "Oracle",
+                "value": 2,
+                "color": "#1ee67b"
+            },
+            {
+                "label": "Self-made",
+                "value": 2,
+                "color": "#b0ec44"
+            },
+            {
+                "label": "ClusterVision",
+                "value": 2,
+                "color": "#a4a0c9"
+            },
+            {
+                "label": "Dawning",
+                "value": 2,
+                "color": "#322849"
+            },
+            {
+                "label": "Others (1 only)",
+                "value": 16,
+                "color": "#86f71a"
+            }
+        ]
+    },
+    "labels": {
+        "outer": {
+            "format": "label-value1",
+            "pieDistance": 32
+        },
+        "inner": {
+            "hideWhenLessThanPercentage": 3
+        },
+        "mainLabel": {
+            "fontSize": 11
+        },
+        "percentage": {
+            "color": "#ffffff",
+            "decimalPlaces": 0
+        },
+        "value": {
+            "color": "#adadad",
+            "fontSize": 11
+        },
+        "lines": {
+            "enabled": true
+        },
+        "truncation": {
+            "enabled": true
+        }
+    },
+    "effects": {
+        "pullOutSegmentOnClick": {
+            "effect": "linear",
+            "speed": 400,
+            "size": 8
+        }
+    },
+    "misc": {
+        "gradient": {
+            "enabled": true,
+            "percentage": 100
+        }
+    },
+    "callbacks": {}
+});

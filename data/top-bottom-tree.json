@@ -1,33 +1,40 @@
 [
     {   
         "name": "0",
-        "text" : "problem",
+        "text" : "[1, 2, 4, 6, 7, 9, 14, 15]",
+        "text2" : "Problem",
         "parents": [
         {
             "name": "1A",
-            "text" : "subproblem",
+            "text" : "[1, 2, 4, 6]",
+            "text2" : "Sub-problem",
             "parents": [
             {
                 "name": "2A",
-                "text" : "subproblem"
+                "text" : "[1, 2]",
+                "text2" : "Sub-sub-problem"
             },
             {
                 "name": "2B",
-                "text" : "subproblem"
+                "text" : "[4, 6]",
+                "text2" : "Sub-sub-problem"
             }
             ]
         },
         {
             "name": "1B",
-            "text" : "subproblem",
+            "text" : "[7, 9, 14, 15]",
+            "text2" : "Sub-problem",
             "parents": [
             {
                 "name": "2C",
-                "text" : "subproblem"
+                "text" : "[7, 9]",
+                "text2" : "Sub-sub-problem"
             },
             {
                 "name": "2D",
-                "text" : "subproblem"
+                "text" : "[14, 15]",
+                "text2" : "Sub-sub-problem"
             }
             ]
         }

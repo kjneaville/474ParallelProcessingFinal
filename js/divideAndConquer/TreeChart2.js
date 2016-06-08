@@ -96,6 +96,49 @@ var TreeChart2 = function () {
 					return 24*i;
 				})
 				.style("opacity", 1);
+
+			node.on("mouseover", function() {
+				d3.select(this).select("rect").attr("fill", "#484848");
+				d3.select(this).attr("fill", "white");
+				d3.select(this).select("text").remove();
+				d3.select(this)
+				.append("text")
+				.attr("font-size", "14px")
+				.attr("x", function(d) { return d.x; })
+				.attr("y", function(d) { return 10 + height - d.y; })
+				.style("text-anchor", "middle")
+				.text(function(d) { return d.text2 ;})
+                .style("opacity", 0)
+				.transition()
+				.duration(600)
+				.delay(function(d,i) {
+					return 24*i;
+				})
+				.style("opacity", 1);
+			});
+
+			node.on("mouseout", function(){
+				d3.select(this).select("rect").attr("fill", function(d) {
+					return color(3 - d.depth)
+				})
+				d3.select(this).attr("fill", "black");
+				d3.select(this).select("text").remove();
+
+				d3.select(this)
+				.append("text")
+				.attr("font-size", "12px")
+				.attr("x", function(d) { return d.x; })
+				.attr("y", function(d) { return 10 + height - d.y; })
+				.style("text-anchor", "middle")
+				.text(function(d) { return d.text ;})
+                .style("opacity", 0)
+				.transition()
+				.duration(600)
+				.delay(function(d,i) {
+					return 24*i;
+				})
+				.style("opacity", 1);
+			});
 			
 			var link = svg.selectAll(".link").data(tree.links(nodes));
 

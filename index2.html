@@ -7,6 +7,7 @@
     <!--<link rel="stylesheet" type="text/css" href="styles/data-race-styles.css">-->
     <link rel="stylesheet" type="text/css" href="styles/scroller.css">
     <link rel="shortcut icon" href="http://www.washington.edu/accesscomputing/sites/all/themes/ac_adaptive/images/iSchool-logo.png" />
+    <script src="js/d3pie.js"></script>
 
   </head>
   <body>
@@ -14,8 +15,7 @@
       <li><a href="">Basics</a></li>
        <li><a href="#treeExample">History</a></li>
       <li><a href="#treeExample">Divide & Conquer</a></li>
-      <li><a href="#treeExample">Data Races</a></li>
-      <li><a href="">Locking</a></li>
+      <li><a href="#treeExample">Data Races & Locking</a></li>
       <li><a href="">Why?</a></li>
       <li><a href="">About</a></li>
     </ul>
@@ -62,14 +62,12 @@
       <p id="example1">Picture below shows all the stuff that happens during a reduction or
       a map: it is a (conceptual!) DAG </p>
       </div>-->
+      <h1 id="divide1"><b>Divide and Conquer Example</b></h1>
+      <p style="font-size: 20px; padding: 10px;">Here we will illustrate how using parallel computing can exponentially speed up solving a problem. Imagine a vast array of numbers that we must find the sum of. Rather than add them up one by one, we can split the array into smaller and smaller units, perform the calculations, then combine all of our calculations.</p>
       <div id="treeExample"></div>
       <div id="treeExample2"></div>
-      
-      
-    <h1 id="race-head"><b>Data Races</b></h1>
-    <h1 id="lock-head"><b>Locking</b></h1>
-    <h1 id="question-head"><b>Why is it important?</b></h1>
-    <h1 id="divide1"><b>Divide and Conquer Example</b></h1>
+
+   
 
     <div class="container" ng-app="app" id="app" ng-controller="Controller">
       <section id="sandbox">
@@ -81,20 +79,21 @@
           <div ng-repeat="section in sectionText" ng-style="$last == true && {'height':'calc(100vh - ' + sectionHeight + 'px)'} || {'height':sectionHeight + 'px'}">
 
             <!-- Paragraph for each section of text, with class 'selected' if $index is current step -->
-            <p ng-class="{selected: $index == step}" >{{section.text}}</p>
-
+            <h1 ng-class="{selected: $index == step}" ng-if="section.head">{{section.head}}</h1>
+            <p class="{{section.cla}}" ng-class="{selected: $index == step}" >{{section.text}}</p>
           </div>
           <charts class="chart"></charts>
         </scroll>
       </section>
     </div>
+      <div id="pieChart"></div>
+      <p id="final">In the real world, many complex, interrelated events are all occuring independently at the same time. Parallel computing gives us a much better model to simulate and understand real world phenomenon.</p>
       <iframe id="solSys" src="//giphy.com/embed/d1zp7XeNrzpWo" width="480" height="331" frameBorder="0"></iframe>
     </div>
-
-    <div id="footer">
-      <!--todo footer content-->
-    </div>
 </section>
+<footer>
+      <p>Created by Kenneth Neaville, Jason Ho, Omar Rojas, and Sophie Zeng for Informatics 474 Spring 2016.</p>
+</footer>
     
   </body>
 
@@ -106,8 +105,10 @@
   <script src="js/EmptyChart.js"></script>
   <script src="./js/page.js"></script>
   <script src="js/LockingAnim.js"></script>
+
   <!--<script src="./js/dataRaces.js"></script>-->
   <!--<script src="./js/divideAndConquer.js"></script>-->
+  <script src="js/divideAndConquer/testmain.js"></script>  
   <script src="/js/divideAndConquer/TreeChart.js"></script>
   <script src="/js/divideAndConquer/TreeChart2.js"></script>
 </html>

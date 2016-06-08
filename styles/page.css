@@ -25,7 +25,7 @@ ul {
 
 li {
     float: left;
-    width: 14%;
+    width: 16.6%;
 }
 
 li a {
@@ -179,9 +179,28 @@ background-color:#4CAF50;
 }
 #solSys{
     position: relative;
-    bottom: 1150px;
+    bottom: 450px;
 }
 .chart {
     position: relative;
     left: 25%;
+}
+.leftLock {
+    margin-right: 50%;
+}
+footer {
+    background: black;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    margin: 0px;
+}
+#pieChart {
+    position: relative;
+    bottom: 900px;
+}
+#final {
+    position: relative;
+    bottom: 800px;
+    font-size: 20px;
 }

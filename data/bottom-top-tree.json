@@ -1,36 +1,44 @@
+
 [
-	{
-		"name" : "0",
-		"text" : "solution to problem",
-		"parents" : [
-			{
-				"name": "1A",
-                "text" : "solution to subproblem",	
-				"parents": [
-					{
-						"name": "2A",
-                    	"text" : "solution to subproblem"	
-					},
-					{
-						"name": "2B",
-						"text" : "solution to subproblem"						
-					}
-				]				
-			},
-			{
-				"name": "1B",
-				"text" : "solution to subproblem",
-				"parents": [
-                {
-                    "name": "2C",
-                    "text" : "solution to subproblem"
-                },
-                {
-                    "name": "2D",
-                    "text" : "solution to subproblem"
-                }
-                ]
-			}
-		]
-	}
+    {   
+        "name": "0",
+        "text" : "58",
+        "text2" : "Solution",
+        "parents": [
+        {
+            "name": "1A",
+            "text" : "13",
+            "text2" : "Sub-solution",
+            "parents": [
+            {
+                "name": "2A",
+                "text" : "3",
+                "text2" : "Sub-sub-solution"
+            },
+            {
+                "name": "2B",
+                "text" : "10",
+                "text2" : "Sub-sub-solution"
+            }
+            ]
+        },
+        {
+            "name": "1B",
+            "text" : "45",
+            "text2" : "Sub-solution",
+            "parents": [
+            {
+                "name": "2C",
+                "text" : "16",
+                "text2" : "Sub-sub-solution"
+            },
+            {
+                "name": "2D",
+                "text" : "29",
+                "text2" : "Sub-sub-solution"
+            }
+            ]
+        }
+        ]
+    }
 ]

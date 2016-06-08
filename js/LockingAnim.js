@@ -28,16 +28,19 @@ var LockingAnim = function() {
                 .attr('height', '50')
                 .attr('width', '50')
                 .attr('fill', data.square[0].colorSquare)
+                .attr('opacity', data.square[0].opac)
                 .attr('transform', 'translate(' + data.square[0].prePosition + ',' + '77' + ')');
 
             circle1.enter().append('circle')
                 .attr('class', 'left-circle')
                 .attr('r', '25')
+                .attr('opacity', data.circle1[0].opac)
                 .attr('transform', 'translate(' + data.circle1[0].prePosition + ',' + '100' + ')');
 
             circle2.enter().append('circle')
                 .attr('class', 'right-circle')
                 .attr('r', '25')
+                .attr('opacity', data.circle2[0].opac)
                 .attr('transform', 'translate(' + data.circle2[0].prePosition + ',' + '100' + ')');
 
             square.transition()
