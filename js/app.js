@@ -114,6 +114,8 @@ var app = angular.module('app', [])
                             data = scope.data[scope.step];
                             chart = EmptyChart();
                             break;
+                        case 'tree':
+                            
                         default:
                             // this should never happen. Something went terribly wrong if this ran
                     }
