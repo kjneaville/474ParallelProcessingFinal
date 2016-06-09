@@ -9,26 +9,6 @@ var app = angular.module('app', [])
 // Main controller
     .controller('Controller', function($scope) {
 
-        $scope.data = [
-            [
-                {id:0, text:'Paragraph 0'},
-                {id:1, text:'Paragraph 1'},
-                {id:2, text:'Paragraph 2'},
-                {id:3, text:'Paragraph 3'}
-            ],
-            [],
-            [
-                {id:0, text:'Paragraph 0'},
-                {id:1, text:'Paragraph 1'},
-                {id:2, text:'Paragraph 2'},
-                {id:3, text:'Paragraph 3'}
-            ],
-            [],
-            [],
-            [],
-            []
-        ];
-
         $scope.animData = {
             circle1: [{id: 0}],
             circle2: [{id: 1}],
@@ -54,7 +34,8 @@ var app = angular.module('app', [])
             {id: 'raceLock', head:'Data Races & Locking', cla:'leftLock', text:"A data race occurs when: two or more threads in a single process access the same memory location concurrently. Here we will illustrate this occurence. Scroll down to see an animation of locking and why it's important. The orange square represents data and the black circles represent parallel processes."},
             {cla:'leftLock', text: "Problems arise when two parallel processes attempt to alter the same data at once. The output can be different than expected when parallel processes happen out of the expected order. This can cause serious problems, such as data corruption."},
             {cla:'leftLock', text: "One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished."},
-            {cla:'leftLock', text: "Now that the first process has finished, the second process can now alter the data."},
+            {cla:'leftLock', text: "The first thread aquires a lock on the data, preventing the second thread from proceeding."},
+            {cla:'leftLock', text: "Now that the first process has finished and released its lock, the second process can now alter the data."},
             {divId:'why', id: 'important', head: 'Why is this important?', text:'Many companies are investing billions into expanding their large-scale parallel computing capabilities. The leaders in parallel computing clusters can be seen below.'},
             {text:""}
         ];
@@ -102,48 +83,77 @@ var app = angular.module('app', [])
                     // you set the data inside the case for your chart. It can be set to anything, doesn't have to be from the data array
                     switch(scope.chartParams[scope.step].chart) {
                         case 'lockingAnim':
-                            var initStep = 1
+                            var initStep = 1;
                             switch(scope.step) {
                                 case initStep:
+                                    scope.animData.circle1[0].position = 150;
+                                    scope.animData.circle2[0].position = 400;
+                                    scope.animData.square[0].position = 250;
+
                                     scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
                                     scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
                                     scope.animData.square[0].prePosition = scope.animData.square[0].position;
-                                    scope.animData.circle1[0].position = 150;
-                                     scope.animData.circle1[0].circRad = 20;
-                                    scope.animData.circle2[0].position = 400;
-                                    scope.animData.square[0].position = 250;
+
+                                    scope.animData.circle1[0].circRad = 20;
+
                                     scope.animData.square[0].opac = 1.0;
                                     scope.animData.circle1[0].opac = 1.0;
                                     scope.animData.circle2[0].opac = 1.0;
+
                                     scope.animData.square[0].colorSquare = 'orange';
                                     break;
                                 case initStep + 1:
-                                    scope.animData.circle1[0].prePosition = 150;
-                                    scope.animData.circle2[0].prePosition = 400;
-                                    scope.animData.square[0].prePosition = 250;
+                                    scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
+                                    scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
+                                    scope.animData.square[0].prePosition = scope.animData.square[0].position;
+
                                     scope.animData.circle1[0].position = 240;
-                                     scope.animData.circle1[0].circRad = 20;
                                     scope.animData.circle2[0].position = 310;
                                     scope.animData.square[0].position = 250;
+
+                                    scope.animData.circle1[0].circRad = 20;
+
                                     scope.animData.square[0].opac = 1.0;
                                     scope.animData.circle1[0].opac = 1.0;
                                     scope.animData.circle2[0].opac = 1.0;
+
                                     scope.animData.square[0].colorSquare = 'red';
                                     break;
                                 case initStep + 2:
-                                    scope.animData.circle1[0].prePosition = 150;
-                                    scope.animData.circle2[0].prePosition = 400;
-                                    scope.animData.square[0].prePosition = 250;
-                                    scope.animData.circle1[0].position = 240;
-                                     scope.animData.circle1[0].circRad = 20;
-                                    scope.animData.circle2[0].position = 350;
+                                    scope.animData.circle1[0].position = 150;
+                                    scope.animData.circle2[0].position = 400;
                                     scope.animData.square[0].position = 250;
+
+                                    scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
+                                    scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
+                                    scope.animData.square[0].prePosition = scope.animData.square[0].position;
+
+                                    scope.animData.circle1[0].circRad = 20;
+
                                     scope.animData.square[0].opac = 1.0;
                                     scope.animData.circle1[0].opac = 1.0;
                                     scope.animData.circle2[0].opac = 1.0;
+
                                     scope.animData.square[0].colorSquare = 'green';
                                     break;
                                 case initStep + 3:
+                                    scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
+                                    scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
+                                    scope.animData.square[0].prePosition = scope.animData.square[0].position;
+
+                                    scope.animData.circle1[0].position = 240;
+                                    scope.animData.circle2[0].position = 350;
+                                    scope.animData.square[0].position = 250;
+
+                                    scope.animData.circle1[0].circRad = 20;
+
+                                    scope.animData.square[0].opac = 1.0;
+                                    scope.animData.circle1[0].opac = 1.0;
+                                    scope.animData.circle2[0].opac = 1.0;
+
+                                    scope.animData.square[0].colorSquare = 'green';
+                                    break;
+                                case initStep + 4:
                                     scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
                                     scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
                                     scope.animData.square[0].prePosition = scope.animData.square[0].position;
@@ -155,7 +165,7 @@ var app = angular.module('app', [])
                                     scope.animData.circle2[0].opac = 1.0;
                                     scope.animData.square[0].colorSquare = 'green';
                                     break;
-                                case initStep + 4:
+                                case initStep + 5:
                                     scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
                                     scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
                                     scope.animData.square[0].prePosition = scope.animData.square[0].position;
@@ -177,8 +187,6 @@ var app = angular.module('app', [])
                             data = [];
                             chart = EmptyChart();
                             break;
-                        case 'tree':
-                            
                         default:
                             // this should never happen. Something went terribly wrong if this ran
                     }
