@@ -55,7 +55,7 @@ var app = angular.module('app', [])
             {cla:'leftLock', text: "Problems arise when two parallel processes attempt to alter the same data at once. The output can be different than expected when parallel processes happen out of the expected order. This can cause serious problems, such as data corruption."},
             {cla:'leftLock', text: "One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished."},
             {cla:'leftLock', text: "Now that the first process has finished, the second process can now alter the data."},
-            {divId:'why', id: 'important', head: 'Why is this important?', text:'Many companies are investing millions into expanding their large-scale parallel computing capabilities.'},
+            {divId:'why', id: 'important', head: 'Why is this important?', text:'Many companies are investing billions into expanding their large-scale parallel computing capabilities. The leaders in parallel computing clusters can be seen below.'},
             {text:""}
         ];
         // Desired section height

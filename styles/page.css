@@ -232,7 +232,7 @@ footer {
 }
 #raceLock {
     position: relative;
-    bottom: 50px;
+    bottom: 100px;
 }
 #divConquer {   
     background: #085078; /* fallback for old browsers */
