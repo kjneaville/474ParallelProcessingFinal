@@ -2,7 +2,7 @@
 
 // After the page load
 $(function chart1() {
-	var data = "/top-bottom-tree.json";
+	var data = "..js/divideAndConquer/top-bottom-tree.json";
 
 	
 	d3.json(data, function(error, root) {
@@ -25,7 +25,7 @@ $(function chart2() {
 	// var data2 = "./data/bottom-to-top.json";
 
 	
-	d3.json("/bottom-top-tree.json", function(error, root) {
+	d3.json("../js/divideAndConquer/bottom-top-tree.json", function(error, root) {
 		if(error) throw error;
 		
 		// Create an instance of the tree chart
