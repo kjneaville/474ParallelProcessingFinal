@@ -178,8 +178,6 @@ var TreeChart2 = function () {
 			// Use the .exit() and .remove() methods to remove elements that are no longer in the data
 			// node.exit().remove();
             // link.exit().remove();           
-			// test
-			console.log(root[0]);
 		})
 	};
 	

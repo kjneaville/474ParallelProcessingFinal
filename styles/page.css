@@ -44,6 +44,7 @@ a:hover:not(.active) {
 background-color:#4CAF50;
 }
 
+
 .intro {
     padding: 20px;
     text-align: left;
@@ -61,6 +62,7 @@ background-color:#4CAF50;
     width: 600px;
     font-size: 12px;
 }
+/*
 #captionLock {
     position: absolute;
     padding: 20px;
@@ -70,12 +72,15 @@ background-color:#4CAF50;
     width: 600px;
     font-size: 12px;
 }
+*/
 
 #basicAnim {
     position: absolute;
     left: 0;
 }
 
+
+/*
 #testDiv {
     position: absolute;
     width: 50px;
@@ -100,6 +105,7 @@ background-color:#4CAF50;
     top: 400px;
     visibility: hidden;
 }
+*/ 
 #flowDiv, #flowDiv2, #flowDiv3, #barDiv, #barDiv2, #barDiv3, #task1Div, #task2Div {
     position: absolute;
     width: 50px;
@@ -109,6 +115,9 @@ background-color:#4CAF50;
     border-radius: 25px;
     background: black;
 }
+
+/*
+
 #squareDiv {
    position: absolute;
    height: 70px;
@@ -116,11 +125,13 @@ background-color:#4CAF50;
    background: orange;
 }
 
+
 .node circle {
     fill: #fff;
     stroke: steelblue;
     stroke-width: 3px;
 }
+
 
 .link {
     fill: none;
@@ -128,12 +139,14 @@ background-color:#4CAF50;
     stroke-width: 2px;
 }
 
+
 #example1 {
     padding: 20px;
     text-align: left;
     margin-left: 25%;
     margin-right: 10%;
 }
+
 
 #comparison {
         padding: 20px;
@@ -143,16 +156,17 @@ background-color:#4CAF50;
 }
 
 
-
 #parallel1 {
     margin-top: -100px;
 }
+
 #question {
     margin-top: 100px;
     width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
+
 #divide1 {
     padding-bottom: 0px;
 }
@@ -167,6 +181,7 @@ background-color:#4CAF50;
     top: 2200px;
     padding: 0px;
 }
+
 #lock-head {
     position: relative;
     top: 2350px;
@@ -177,6 +192,7 @@ background-color:#4CAF50;
     top: 2900px;
     padding: 0px;
 }
+*/
 #solSys{
     position: relative;
     bottom: 450px;
@@ -185,9 +201,12 @@ background-color:#4CAF50;
     position: relative;
     left: 25%;
 }
+
 .leftLock {
     margin-right: 50%;
 }
+
+
 footer {
     background: black;
     color: white;
@@ -198,9 +217,25 @@ footer {
 #pieChart {
     position: relative;
     bottom: 900px;
+    background: white;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 #final {
     position: relative;
-    bottom: 800px;
+    bottom: 700px;
     font-size: 20px;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+#raceLock {
+    position: relative;
+    bottom: 50px;
+}
+#divConquer {   
+    background: #085078; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #085078 , #85D8CE); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #085078 , #85D8CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

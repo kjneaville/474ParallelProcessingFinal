@@ -4,20 +4,22 @@
     <title>Introduction to Parallel Processing</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
     <link rel="stylesheet" type="text/css" href="styles/page.css">
-    <link rel="stylesheet" type="text/css" href="styles/data-race-styles.css">
-    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/scroller.css">
+    <link rel="shortcut icon" href="http://www.washington.edu/accesscomputing/sites/all/themes/ac_adaptive/images/iSchool-logo.png" />
+    <script src="js/d3pie.js"></script>
   </head>
-  <body>
-    <ul>
+<body>
+  <ul>
       <li><a href="">Basics</a></li>
-      <li><a href="#treeExample">History</a></li>
-      <li><a href="#treeExample">Example</a></li>
-      <li><a href="">Locking</a></li>
-      <li><a href="">About</a></li>
-    </ul>
-
+      <li><a href="#history">History</a></li>
+      <li><a href="#divide1">Divide & Conquer</a></li>
+      <li><a href="#raceLock">Data Races & Locking</a></li>
+      <li><a href="#important">Why?</a></li>
+      <li><a href="#about">About</a></li>
+  </ul>
+<section id="main">
     <h1><b>What is Parallel Processing?</b></h1>
-    <div id="basicAnim"></div> <!--todo move this to map reduce section-->
+    <div id="basicAnim"></div>
     <div>
       <p class="intro">
           Parallel processing (or parallel computing) is computation where many calculations are carried out simultaneously
@@ -44,44 +46,45 @@
       <div id="barDiv3"></div>
       <div id="testDiv"></div>
       <div id="testDiv2"></div>
-
-      <!--History-->
-
-      <h1><b>History of Parallel Processing</b></h1>
-      <div id="timeLine"></div>
-
-      <!--Divide-n-Conquer Example-->
-
-      <h1 id="divide1"><b>Divide-n-Conquer Example</b></h1>
-      <p id="example1">Picture below shows all the stuff that happens during a reduction or
-      a map: it is a (conceptual!) DAG </p>
+</section>
+    <div id="hist">
+      <h1 style="background: white; margin-bottom:0px;" id="history"><b>History of Parallel Processing</b></h1>
+      <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1OMKAoNFiz6GfGxx8T5q3IsB79bij1HXGtF3dOFbI3Hs&font=Default&lang=en&initial_zoom=1&height=650' width='100%' height='650' frameborder='0'></iframe>
     </div>
-    <div id="treeExample"></div>
-
-
-    <div>
-      <h1 id="parallel1"><b>Parallelism vs. Concurrency</b></h1>
-      <p id="comparison">Parallelism is when tasks literally run at the
-      same time, eg. on a multicore processor. Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn't necessarily mean they'll ever both be running at the same instant. </p>
+      <h1 id="divide1" style="margin-top:0px;"><b>Divide and Conquer Example</b></h1>
+      <p style="font-size: 20px; padding: 10px; width:50%; margin-left: 25%; margin-right:25; ">Here we will illustrate how using parallel computing can exponentially speed up solving a problem. Imagine a vast array of numbers that we must find the sum of. Rather than add them up one by one, we can split the array into smaller and smaller units, perform the calculations, then combine all of our calculations.</p>
+    <div id="divConquer">
+      <div id="treeExample"></div>
+      <div id="treeExample2"></div>
     </div>
 
-    <div id="race">
-      <p> <!-- removed lorem ipsum !--> </p>
-      <div id="race-anim"></div>
+    <div class="container" ng-app="app" id="app" ng-controller="Controller">
+      <section id="sandbox">
+        <scroll class="scroller">
+          <div ng-repeat="section in sectionText" ng-style="$last == true && {'height':'calc(100vh - ' + sectionHeight + 'px)'} || {'height':sectionHeight + 'px'}" id="{{section.divId}}">
+            <h1 ng-class="{selected: $index == step}" ng-if="section.head" id="{{section.id}}">{{section.head}}</h1>
+            <p class="{{section.cla}}" ng-class="{selected: $index == step}" >{{section.text}}</p>
+          </div>
+          <charts class="chart"></charts>
+        </scroll>
+      </section>
     </div>
-
-    <div id="locking">
-      <p> <!--I removed the lorem ipsum text that was here fyi !--> </p>
-      <div id="locking-anim"></div>
+      <div id="pieChart"></div>
+      <p id="final">In the real world, many complex, interrelated events are all occuring independently at the same time. Parallel computing gives us a much better model to simulate and understand real world phenomenon.</p>
+      <iframe id="solSys" src="//giphy.com/embed/d1zp7XeNrzpWo" width="480" height="331" frameBorder="0"></iframe>
     </div>
-
-    <div id="footer">
-      <!--todo footer content-->
-    </div>
-  </body>
-
+  <footer id ="about">
+        <p>Created by Kenneth Neaville, Jason Ho, Omar Rojas, and Sophie Zeng for Informatics 474 Spring 2016.</p>
+  </footer>
+</body>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="./js/page.js"></script>
-  <script src="./js/dataRaces.js"></script>
-  <script src="./js/divideAndConquer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/divideAndConquer/testmain.js"></script>  
+  <script src="/js/divideAndConquer/TreeChart.js"></script>
+  <script src="/js/divideAndConquer/TreeChart2.js"></script>
+  <script src="js/EmptyChart.js"></script>
+  <script src="js/LockingAnim.js"></script>
+  <script src="js/page.js"></script>
 </html>

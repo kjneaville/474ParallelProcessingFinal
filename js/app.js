@@ -9,10 +9,6 @@ var app = angular.module('app', [])
 // Main controller
     .controller('Controller', function($scope) {
 
-        // Data for the chart
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // todo add 'data' or whatever you need to make your chart run. Make sure it lines up with the section you chart exists in //
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $scope.data = [
             [
                 {id:0, text:'Paragraph 0'},
@@ -39,9 +35,6 @@ var app = angular.module('app', [])
             square: [{id: 2}]
         };
 
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // todo parameters for the chart directive. This will tell the directive which chart to display and what properties that chart will have //
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $scope.chartParams = [
             {chart: 'empty'},
             {chart: 'lockingAnim'},
@@ -56,17 +49,13 @@ var app = angular.module('app', [])
 
         $scope.step = 0;
 
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        //            todo Text for each section, this is where descriptions should go.            //
-        // todo this can be changed to html if you want, you need to modiy index for that to work. //
-        /////////////////////////////////////////////////////////////////////////////////////////////
         $scope.sectionText = [
             {text:'Divide and Conquer is an algorithm design paradigm based on multi-branched recursion. A divide and conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. The solutions to the sub-problems are then combined to give a solution to the original problem.'},
-            {head:'Data Races & Locking', cla:'leftLock', text:"A data race occurs when: two or more threads in a single process access the same memory location concurrently. Here we will illustrate this occurence. Scroll down to see an animation of locking and why it's important. The orange square represents data and the black circles represent parallel processes."},
+            {id: 'raceLock', head:'Data Races & Locking', cla:'leftLock', text:"A data race occurs when: two or more threads in a single process access the same memory location concurrently. Here we will illustrate this occurence. Scroll down to see an animation of locking and why it's important. The orange square represents data and the black circles represent parallel processes."},
             {cla:'leftLock', text: "Problems arise when two parallel processes attempt to alter the same data at once. The output can be different than expected when parallel processes happen out of the expected order. This can cause serious problems, such as data corruption."},
             {cla:'leftLock', text: "One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished."},
-            {cla:'leftLock', text: "Now that the first process has finished, the second process can now alter the data. One solution to this problem is locking, which prevents processes from accesing data until the first process has finished."},
-            {head: 'Why is this important?', text:'Many companies are investing millions into expanding their large-scale parallel computing capabilities.'},
+            {cla:'leftLock', text: "Now that the first process has finished, the second process can now alter the data."},
+            {divId:'why', id: 'important', head: 'Why is this important?', text:'Many companies are investing millions into expanding their large-scale parallel computing capabilities.'},
             {text:""}
         ];
         // Desired section height
@@ -111,13 +100,11 @@ var app = angular.module('app', [])
                     // todo cases for all chart types
                     // switch chart type depending on step, also apply any specific properties we need to
                     // you set the data inside the case for your chart. It can be set to anything, doesn't have to be from the data array
-                    console.log(scope.step);
                     switch(scope.chartParams[scope.step].chart) {
                         case 'lockingAnim':
                             var initStep = 1
                             switch(scope.step) {
                                 case initStep:
-                                    console.log("first csaseee")
                                     scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
                                     scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
                                     scope.animData.square[0].prePosition = scope.animData.square[0].position;
@@ -131,7 +118,6 @@ var app = angular.module('app', [])
                                     scope.animData.square[0].colorSquare = 'orange';
                                     break;
                                 case initStep + 1:
-                                console.log("second csaseee")
                                     scope.animData.circle1[0].prePosition = 150;
                                     scope.animData.circle2[0].prePosition = 400;
                                     scope.animData.square[0].prePosition = 250;
@@ -170,7 +156,6 @@ var app = angular.module('app', [])
                                     scope.animData.square[0].colorSquare = 'green';
                                     break;
                                 case initStep + 4:
-                                console.log("LAST");
                                     scope.animData.circle1[0].prePosition = scope.animData.circle1[0].position;
                                     scope.animData.circle2[0].prePosition = scope.animData.circle2[0].position;
                                     scope.animData.square[0].prePosition = scope.animData.square[0].position;

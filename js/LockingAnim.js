@@ -3,22 +3,15 @@
  */
 
 var LockingAnim = function() {
-    // local property variables
     var color;
     var fontSize;
 
     var chart = function(selection) {
         selection.each(function(data) {
-            console.log(data);
             var parentDiv = d3.select(this);
-
-            console.log('called');
-
             var svg;
-
             parentDiv.selectAll('svg').remove();
             svg = parentDiv.append('svg').attr('class', 'lockingAnim').attr('width', 800).attr('height', 400);
-            
             var square = svg.selectAll('rect').data(data.square, function(d) {return d.id});
             var circle1 = svg.selectAll('circle.left-circle').data(data.circle1, function(d) {return d.id});
             var circle2 = svg.selectAll('circle.right-circle').data(data.circle2, function(d) {return d.id});
@@ -70,18 +63,6 @@ var LockingAnim = function() {
                 .remove();
         })
     };
-
-    // chart.color = function(value) {
-    //     if(!arguments.length) return color;
-    //     color = value;
-    //     return this;
-    // };
-    //
-    // chart.fontSize = function(value) {
-    //     if(!arguments.length) return fontSize;
-    //     fontSize = value;
-    //     return this;
-    // };
 
     return chart;
 };

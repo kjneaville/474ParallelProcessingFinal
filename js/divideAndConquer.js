@@ -2,28 +2,7 @@
  * Created by Jason on 5/27/2016.
  */
 
-$(document).ready(function() {
-    // Example of the divide-n-conquer approach
-
-   //     // orientations for the tree layout     
-//     var orientations = {
-//         "top-to-bottom": {
-//             size: [width, height],
-//             x: function(d) { return d.x; },
-//             y: function(d) { return d.y; }
-//         },
-//         "bottom-to-top": {
-//             size: [width, height],
-//             x: function(d) { return d.x; },
-//             y: function(d) { return height - d.y; }
-//         }
-//     }    
-
-// TO DO: Combine both charts, make it resuable,
-// add var orientations
-// add animaitons, chart builds as scrolling
-// edit chart style
-    
+$(document).ready(function() {   
     // top-to-bottom tree
     var margin = {top: 100, right: 50, bottom: 100, left: 50},
         width = 900 - margin.left - margin.right,
@@ -56,28 +35,12 @@ $(document).ready(function() {
         .attr("x", function(d) { return d.x - 70; })
         .attr("y", function(d) { return d.y - 40; });
     
-    // text that shows the name (for testing)
-    // node.append("text")
-    //     .attr("font-size", "16px")
-    //     .attr("fill", "black")
-    //     .attr("x", function(d) { return d.x; })
-    //     .attr("y", function(d) { return height - d.y - 15; })
-    //     .style("text-anchor", "middle")
-    //     .text(function(d) { return d.name; });
-    
     node.append("text")
         .attr("font-size", "12px")
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return 10 + d.y; })
         .style("text-anchor", "middle")
         .text(function(d) { return d.text ;});
-    
-    // node.append("text")
-    //     .attr("font-size", "11px")
-    //     .attr("x", function(d) { return d.x; })
-    //     .attr("y", function(d) { return 28 + height - d.y; })
-    //     .style("text-anchor", "middle")
-    //     .text(function(d) { return d.text; });
         
     var link = svg.selectAll(".link")
         .data(tree.links(nodes))
@@ -134,7 +97,6 @@ $(document).ready(function() {
         };
     };
     
-    
     // bottom-to-top tree
     var margin = {top: 100, right: 50, bottom: 100, left: 50},
         width = 900 - margin.left - margin.right,
@@ -167,28 +129,12 @@ $(document).ready(function() {
         .attr("x", function(d) { return d.x - 70; })
         .attr("y", function(d) { return height - d.y - 40; });
     
-    // text that shows the name (for testing)
-    // node.append("text")
-    //     .attr("font-size", "16px")
-    //     .attr("fill", "black")
-    //     .attr("x", function(d) { return d.x; })
-    //     .attr("y", function(d) { return height - d.y - 15; })
-    //     .style("text-anchor", "middle")
-    //     .text(function(d) { return d.name; });
-    
     node.append("text")
         .attr("font-size", "12px")
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return 10 + height - d.y; })
         .style("text-anchor", "middle")
         .text(function(d) { return d.text ;});
-    
-    // node.append("text")
-    //     .attr("font-size", "11px")
-    //     .attr("x", function(d) { return d.x; })
-    //     .attr("y", function(d) { return 28 + height - d.y; })
-    //     .style("text-anchor", "middle")
-    //     .text(function(d) { return d.text; });
         
     var link = svg.selectAll(".link")
         .data(tree.links(nodes))
@@ -206,7 +152,6 @@ $(document).ready(function() {
                 + "H" + d.target.x
                 + "V" + (height - d.target.y);
     };
-    
     
     function getData() {
         return {  

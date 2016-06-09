@@ -122,74 +122,6 @@ $(document).ready(function() {
         }
     }
 });
-/*
-   task1 = document.getElementById("task1Div");
-   task2 = document.getElementById("task2Div");
-   squareDiv = document.getElementById("squareDiv");
-   task1.style.left = 450 + "px";
-   task1.style.top = 4500 + "px";
-   task2.style.left = 800 + "px";
-   task2.style.top = 4500 + "px";
-   squareDiv.style.top = 4490 + "px";
-   squareDiv.style.left = 600 + "px";
-   lockAnim();
-
-   function lockAnim() {
-    if (parseInt(task1.style.left) < 570)
-           task1.style.left = parseInt(task1.style.left) + 1 + 'px';
-       if (parseInt(task2.style.left) > 650) {
-        task2.style.left = parseInt(task2.style.left) - 1 + 'px';
-        setTimeout(lockAnim, 20);
-    } else {
-        clearTimeout(lockAnim);
-        setTimeout(lockAnim2, 2000);
-    }
-   }
-
-   function lockAnim2() {
-    if (parseInt(task2.style.left) == 650) {
-        task1.style.left = 450 + "px";
-        task2.style.left = 800 + "px";
-    }
-    if (parseInt(task1.style.left) < 570) {
-           task1.style.left = parseInt(task1.style.left) + 1 + 'px';
-        task2.style.left = parseInt(task2.style.left) - 1 + 'px';
-        setTimeout(lockAnim2, 20);
-    } else {
-        clearTimeout(lockAnim2);
-        setTimeout(lockAnim3, 2000);
-    }
-   }
-
-   function lockAnim3() {
-    task1.style.visibility = "hidden";
-    task2.style.left = parseInt(task2.style.left) - 1 + 'px';
-
-    if (parseInt(task2.style.left) > 650) {
-        setTimeout(lockAnim3, 20);
-    } else {
-        clearTimeout(lockAnim3);
-        setTimeout(hideTask2, 1000);
-        setTimeout(reset, 1500);
-        setTimeout(lockAnim, 1600);
-    }
-   }
-
-   function reset() {
-    task1.style.visibility = "visible";
-    task2.style.visibility = "visible";
-    task1.style.left = 450 + "px";
-    task2.style.left = 800 + "px";
-   }
-   
-   function hideTask2() {
-    task2.style.visibility = "hidden";
-   }
-});
-
- var svgContainer = d3.select("#timeLine").append("svg")
-                                     .attr("width", 400)
-                                     .attr("height", 300);*/
 
 var pie = new d3pie("pieChart", {
     "header": {
@@ -199,8 +131,8 @@ var pie = new d3pie("pieChart", {
             "font": "open sans"
         },
         "subtitle": {
-            "text": "A handful of well known vendors produce large parallel computers as clusters of hardware.",
-            "color": "#999999",
+            "text": "A handful of well known vendors produce large parallel computers as clusters of hardware. Source: Top500.org",
+            "color": "black",
             "fontSize": 12,
             "font": "open sans"
         },
