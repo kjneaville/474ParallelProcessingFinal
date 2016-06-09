@@ -30,14 +30,40 @@ var app = angular.module('app', [])
         $scope.step = 0;
 
         $scope.sectionText = [
-            {text:'Divide and Conquer is an algorithm design paradigm based on multi-branched recursion. A divide and conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. The solutions to the sub-problems are then combined to give a solution to the original problem.'},
-            {id: 'raceLock', head:'Data Races & Locking', cla:'leftLock', text:"A data race occurs when: two or more threads in a single process access the same memory location concurrently. Here we will illustrate this occurence. Scroll down to see an animation of locking and why it's important. The orange square represents data and the black circles represent parallel processes."},
-            {cla:'leftLock', text: "Problems arise when two parallel processes attempt to alter the same data at once. The output can be different than expected when parallel processes happen out of the expected order. This can cause serious problems, such as data corruption."},
-            {cla:'leftLock', text: "One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished."},
-            {cla:'leftLock', text: "The first thread aquires a lock on the data, preventing the second thread from proceeding."},
-            {cla:'leftLock', text: "Now that the first process has finished and released its lock, the second process can now alter the data."},
-            {divId:'why', id: 'important', head: 'Why is this important?', text:'Many companies are investing billions into expanding their large-scale parallel computing capabilities. The leaders in parallel computing clusters can be seen below.'},
-            {text:""}
+            {
+                text:'Divide and Conquer is an algorithm design paradigm based on multi-branched recursion. A divide and conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. The solutions to the sub-problems are then combined to give a solution to the original problem.'
+            },
+            {
+                id: 'raceLock',
+                head:'Data Races & Locking',
+                cla:'leftLock',
+                text:"A data race occurs when: two or more threads in a single process access the same memory location concurrently. Here we will illustrate this occurence. Scroll down to see an animation of locking and why it's important. The orange square represents data and the black circles represent parallel processes."
+            },
+            {
+                cla:'leftLock',
+                text: "Problems arise when two parallel processes attempt to alter the same data at once. The output can be different than expected when parallel processes happen out of the expected order. This can cause serious problems, such as data corruption."
+            },
+            {
+                cla:'leftLock',
+                text: "One solution to this problem is locking, which prevents additional processes from accesing data until the first process has finished."
+            },
+            {
+                cla:'leftLock',
+                text: "The first thread aquires a lock on the data, preventing the second thread from proceeding."
+            },
+            {
+                cla:'leftLock',
+                text: "Now that the first process has finished and released its lock, the second process can now alter the data."
+            },
+            {
+                divId:'why',
+                id: 'important',
+                head: 'Why is this important?',
+                text:'Many companies are investing billions into expanding their large-scale parallel computing capabilities. The leaders in parallel computing clusters can be seen below.'
+            },
+            {
+                text:""
+            }
         ];
         // Desired section height
         // todo decide how tall sections should be and what header we want before charts start appearing
