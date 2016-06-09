@@ -59,7 +59,7 @@ var app = angular.module('app', [])
                 divId:'why',
                 id: 'important',
                 head: 'Why is this important?',
-                text:'Many companies are investing billions into expanding their large-scale parallel computing capabilities. The leaders in parallel computing clusters can be seen below.'
+                text:'In the real world, many complex, interrelated events are all occuring independently at the same time. Parallel computing gives us a much better model to simulate and understand real world phenomenon. Many companies are investing billions into expanding their large-scale parallel computing capabilities. The leaders in parallel computing clusters can be seen below.'
             },
             {
                 text:""
